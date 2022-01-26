@@ -1,0 +1,21 @@
+package main
+
+  import (
+    "crypto/md5"
+    "encoding/binary"
+    "fmt"
+    "math/rand"
+    "bufio"
+    "os"
+    "strconv"
+)
+
+  func main() {
+    h := md5.New() //encrypt output with md5
+    var reader = bufio.NewReader(os.Stdin) //declare reader variable from user input
+    seed, _ := reader.ReadString('\n') //create variable "prime" from input & skip var asssignment
+    #PROBLEM: HOW USE GENERATED VAR IN CONVERSION TO UINT64# seed uint64 = (binary.BigEndian.Uint64(h.Sum(nil)) //problem. Convert var "seed" from string to uint64
+    fmt.Println(seed)
+    rand.Seed(int64(seed))
+    fmt.Println(rand.Int())
+  }
